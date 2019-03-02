@@ -1,0 +1,16 @@
+<!doctype HTML>
+<html>
+<script src="js/aframe.min.js"></script>
+<script src="js/aframe-ar.js"> </script>
+
+  <body style='margin : 0px; overflow: hidden;'>
+
+    <a-scene embedded arjs=’sourceType: webcam;’>
+		  <a-marker preset=’hiro’>
+        <a-image src="assets/pic.png"></a-image>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+  </body>
+</html>

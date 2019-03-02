@@ -1,0 +1,22 @@
+<!doctype HTML>
+<html>
+<script src="js/aframe.min.js"></script>
+<script src="js/aframe-ar.js"> </script>
+
+  <body style='margin : 0px; overflow: hidden;'>
+
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="crate-obj" src="assets/car.obj"></a-asset-item>
+        <a-asset-item id="crate-mtl" src="assets/car.mtl"></a-asset-item>
+      </a-assets>
+
+      <!-- Using the asset management system. -->
+      <a-obj-model src="#crate-obj" mtl="#crate-mtl"></a-obj-model>
+
+      <!-- Defining the URL inline. Not recommended but may be more comfortable. -->
+      <a-obj-model src="assets/car.obj" mtl="assets/car.mtl"></a-obj-model>
+    </a-scene>
+
+  </body>
+</html>
