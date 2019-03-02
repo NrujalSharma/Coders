@@ -1,0 +1,18 @@
+<!doctype HTML>
+<html>
+<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
+
+  <body style='margin : 0px; overflow: hidden;'>
+
+    <a-scene embedded arjs=’sourceType: webcam;’>
+      <a-anchor hit-testing-enabled="true">
+        <a-entity
+          obj-model="obj: url(assets/lambo/Lamborghini_Aventador.obj);">
+        </a-entity>
+      <a-anchor>
+      <a-camera-static/>
+    </a-scene>
+
+  </body>
+</html>
