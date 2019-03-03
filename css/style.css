@@ -1,0 +1,12 @@
+body{
+	margin: 0;
+	font-family: 'ZCOOL XiaoWei', serif;
+	color: #000000;
+}
+
+.main{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	right: 20px;
+}
