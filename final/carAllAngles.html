@@ -1,0 +1,64 @@
+<!doctype HTML>
+<html>
+<head>
+  <script src="js/aframe.min.js"></script>
+  <script src="js/aframe-ar.js"> </script>
+  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+</head>
+  <body style='margin : 0px; overflow: hidden;'>
+
+    <a-scene id="scene">
+      <a-assets>
+        <a-asset-item id="crate-obj" src="model/car.obj"></a-asset-item>
+        <a-asset-item id="crate-mtl" src="model/car.mtl"></a-asset-item>
+      </a-assets>
+
+      <!-- Using the asset management system. -->
+      <!-- <a-obj-model position="-1 0.5 -3" src="#crate-obj" mtl="#crate-mtl"></a-obj-model> -->
+      <a-obj-model position="0 8 0" src="#crate-obj" mtl="#crate-mtl"></a-obj-model>
+      <a-obj-model position="0 -8 0" src="#crate-obj" mtl="#crate-mtl"></a-obj-model>
+      <a-obj-model position="0 0 -6" src="#crate-obj" mtl="#crate-mtl"></a-obj-model>
+      <a-obj-model position="0 0 6" src="#crate-obj" mtl="#crate-mtl"></a-obj-model>
+      <a-obj-model position="6 0 0" src="#crate-obj" mtl="#crate-mtl"></a-obj-model>
+      <a-obj-model position="-6 0 0" src="#crate-obj" mtl="#crate-mtl"></a-obj-model>
+      <!-- Defining the URL inline. Not recommended but may be more comfortable. -->
+      <!-- <a-obj-model position="-1 0.5 -3" src="assets/car.obj" mtl="assets/car.mtl"></a-obj-model> -->
+
+      <!-- <a-marker-camera preset="hiro"></a-marker-camera> -->
+    </a-scene>
+
+  </body>
+
+  <script>
+  	const scene = document.getElementById('scene')
+  	scene.addEventListener('touchmove', event => {movingTouch(event)})
+  	const model = document.getElementById('model')
+  	const manager = new Hammer.Manager(scene)
+  	const pinch = new Hammer.Pinch()
+  	manager.add(pinch)
+  	manager.on('pinch', function(ev) {
+  		if (!model) return
+  		const curr = model.getAttribute('scale')
+  		const scale = (ev.scale - 1)*0.01
+  		model.setAttribute('scale', {
+  			'x': curr.x + scale,
+  			'y': curr.y + scale,
+  			'z': curr.z + scale
+  		})
+  	})
+  	const movingTouch = event => {
+  		if (!model) return
+  		const curr = model.getAttribute('rotation')
+  		let touches = event.changedTouches
+  		for (touch of touches) {
+  			model.setAttribute('rotation', {
+  				'x': curr.x + touch.pageX*0.01,
+  				'y': curr.y - touch.pageY*0.01,
+  				'z': curr.z
+  			})
+  		}
+  	}
+  </script>
+
+
+</html>

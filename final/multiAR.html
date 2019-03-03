@@ -1,0 +1,48 @@
+<!doctype HTML>
+<html>
+<script src="js/aframe.min.js"></script>7
+<script src="js/aframe-ar.js"> </script>
+
+
+  <body style='margin : 0px; overflow: hidden;'>
+<!-- 	   <a-scene embedded artoolkit='sourceType: webcam; cameraParametersUrl: https://rawgit.com/jeromeetienne/ar.js/master/data/data/camera_para.dat' >
+       <a-marker type='pattern' url='https://rawgit.com/jeromeetienne/ar.js/master/data/data/patt.hiro'> 
+         <a-sphere src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/space/earth_atmos_4096.jpg" radius="0.5" segments-height="53" position="0 0 0.5" rotation='0 0 0'>
+           <a-animation attribute="rotation"
+                        dur="15000"
+                        to="0 360 0"
+                        easing= "linear"
+                        repeat="indefinite">
+          </a-animation>
+        </a-sphere>
+		     <a-sky color="lightyellow"></a-sky>
+         </a-marker>
+				 define a simple camera  
+				<a-entity camera></a-entity>
+			</a-scene>
+ -->
+ 
+    <!-- create your content here. just a box for now -->
+    <a-scene embedded  arjs='sourceType: webcam;'>
+ 
+    <a-assets>
+      <a-asset-item id="scene" src="model/Duck.gltf"></a-asset-item>
+      <a-asset-item id="scene1" src="model/BrainStem.gltf"></a-asset-item>
+      <a-asset-item id="scene2" src="model/BoxAnimated.gltf"></a-asset-item>
+      <a-asset-item id="scene3" src="model/Monster.gltf"></a-asset-item>
+    </a-assets>
+<!-- use your gltf model -->
+  
+    <!-- define a camera which will move according to the marker position -->
+    <a-marker preset='kanji'>
+      <a-entity gltf-model="#scene"></a-entity>
+    </a-marker>
+    <a-marker preset='hiro'>
+      <a-entity gltf-model="#scene2"></a-entity>
+    </a-marker>
+     
+
+    <a-entity camera></a-entity>
+  </a-scene>
+  </body>
+</html>
